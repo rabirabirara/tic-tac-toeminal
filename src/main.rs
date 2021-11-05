@@ -115,11 +115,12 @@ impl TicTacToeAI {
 
 // TODO: Implement actual game and game loop.
 
-
+// Prints a board with a fancy marking telling you who moved.
 fn print_move(board: Board, who_moved: String) {
-    println!("\n{} moved: \n========\n{}========", who_moved, board)
+    println!("\n{} moved: \n========\n{}========\n", who_moved, board)
 }
 
+// Reads a command from stdin.
 fn receive_move(board: Board, turn: Turn) -> Option<Board> {
     println!("Your move.");
     let mut input = String::new();
@@ -130,7 +131,6 @@ fn receive_move(board: Board, turn: Turn) -> Option<Board> {
                     match Board::try_move(&board, key, turn) {
                         None => {
                             println!("Invalid move... try again, but choose an empty square.");
-                            continue;
                         }
                         some_board => return some_board,
                     }
@@ -164,20 +164,22 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     // println!("{}", a);
 
     let mut board: Board = Board::new();
+    println!("Guide:\n");
     board.display()?;
-    println!("Offer a number from 1-9 accordingly to place your square.  Offer 0 to end the game.");
+    println!("\nOffer a number from 1-9 accordingly to place your square.  Offer 0 to end the game.");
     while !board.accepts() {
         if let Some(b) = receive_move(board, Turn::X) {
-            print_move(b, "Human: X".into());
+            board = b;
+            print_move(board, "Human (X)".into());
             std::thread::sleep(std::time::Duration::from_secs(1));
-            // b.display()?;
+            // board.display()?;
 
-            if b.accepts() {
+            if board.accepts() {
                 break;
             }
 
             board = p2.choose_move(b);
-            print_move(board, "AI: O".into());
+            print_move(board, "AI (O)".into());
             std::thread::sleep(std::time::Duration::from_secs(1));
 
             // board.display()?;

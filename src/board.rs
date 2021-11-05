@@ -131,7 +131,7 @@ impl Board {
             } else if self.evaluate(Turn::O) == 1 {
                 "Player 2 (O) wins!".into()
             } else {
-                "Draw.".into()
+                "The game is drawn.".into()
             }
         } else {
             "Game over.".into()
