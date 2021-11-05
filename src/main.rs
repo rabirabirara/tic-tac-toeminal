@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 mod board;
 mod search;
 
@@ -5,7 +7,6 @@ use crate::board::*;
 use rand::seq::SliceRandom;
 use std::cmp::{max, min};
 use std::collections::HashMap;
-use std::io::{Read, Stdin};
 
 // struct Game {
 //     current_turn: Turn, //btw, current turn can be determined from game state alone
@@ -18,12 +19,6 @@ struct TicTacToeAI {
 }
 
 impl TicTacToeAI {
-    fn new() -> Self {
-        Self {
-            turn: Turn::X,
-            state_evals: HashMap::new(),
-        }
-    }
     fn from_turn(turn: Turn) -> Self {
         Self {
             turn: turn,
@@ -109,6 +104,15 @@ impl TicTacToeAI {
             }
             self.state_evals.insert(board, mineval);
             mineval
+        }
+    }
+}
+
+impl Default for TicTacToeAI {
+    fn default() -> Self {
+        Self {
+            turn: Turn::X,
+            state_evals: HashMap::new(),
         }
     }
 }
