@@ -1,7 +1,6 @@
 #![allow(dead_code)]
 
 mod board;
-mod search;
 
 use crate::board::*;
 use rand::seq::SliceRandom;
