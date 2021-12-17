@@ -30,11 +30,12 @@ Break ties as you need.
 
 ## Writing AI for adversarial games, such as Chess
 
-Tic-Tac-Toe is decided not just because minimax has solved it in its entirety, but because it's so tiny that humans already did that.  
+Tic-Tac-Toe is decided not just because minimax has solved it in its entirety, but because it's so tiny that humans have already solved it.  
+
 You could probably write down all the possible states of Tic-Tac-Toe yourself, eventually.  Well, you probably won't, because most of them are garbage.
 The tree of all possible boards in Tic-Tac-Toe is actually still quite large.  If there are 9 possible moves, then 8 possible moves, then 7, ... etc. then 1, then we have 9!
 possible boards.  (That is an upper bound; there are of course some boards which use less than 9 moves and end early.)
-That's 362,880 boards!  Okay, maybe you won't be able to write all the states down.
+That's 362,880 boards!  It might take some time.
 
 Chess is even larger.  When searching for our next move, we think of the game as a tree.  The current board is like the root, or the seed of the tree;
 all the possible moves are its branches.  The number of possible moves to make is called the "branching factor".
@@ -48,7 +49,7 @@ we still have to examine 35! total chess positions.  If you google 35!, you will
 
 Chess is not solvable with the minimax algorithm, and certainly not decidable in its entirety anytime soon.  We are limited by both time and space - that is, if a modern 
 computer were to investigate every possible move from a given position, it would take too long (the heat death of the universe would come first), and it would
-use too much memory (I am always running out of memory on my phone).  This is why slightly nondeterministic methods such as Monte Carlo Tree Search or Deep Learning are
+use too much memory (I am always running out of memory on my phone).  This is why nondeterministic methods such as Monte Carlo Tree Search or Deep Learning are
 instead at the forefront of Chess engine design.
 
 
