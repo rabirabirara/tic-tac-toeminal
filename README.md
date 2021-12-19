@@ -3,6 +3,8 @@ A simple terminal Tic-Tac-Toe game, with the naive minimax implementation as an 
 
 ## How to use
 
+You'll need an installation of Rust (`cargo`) to build and run this project.
+
 Just run the executable in the terminal (use `cargo run` or something). You can make a move by pressing 1-9 and then Enter.  You can also quit by pressing 0 instead.
 
 You will be given a guide board to show you which key places where.  At present, you can only play against the indomitable AI, which means you will never see the win screen.
